@@ -33,7 +33,6 @@ jobs:
             echo "build listing"
             ls -lah build
             ls -lah build/downloaded-artifact/
-            
 
         - uses: jakejarvis/s3-sync-action@master
           with:
