@@ -9,8 +9,14 @@ jobs:
     check_pr_source:
         runs-on: ubuntu-latest
         steps:
-            - name: Fail if pr is not from dev
-              if: ${{github.base_ref}} =! "dev"
+            - name: display github
+              env: 
+                GITHUB_CONTEXT: ${{ toJson(github) }}
               run: |
-                echo: "Error: you can only merge from 'dev' branch."
+                echo "$GITHUB_CONTEXT"
+
+            - name: Fail if pr is not from dev
+              if: ${{github.head_ref != 'dev' }}
+              run: |
+                echo "Error: you can only merge from 'dev' branch. '${{github.head_ref}}'"
                 exit 1
