@@ -11,7 +11,7 @@ jobs:
         steps:
             - name: Check name pattern 
               run: | 
-                BRANCH=${GITHUB_REF_NAME}" 
+                BRANCH="${GITHUB_REF_NAME}" 
                 if [[ ! "$BRANCH" =~ ^(bugfix|feauture)/.+$ ]]; then
                     echo "Error: branch does not match naming convetions"
                     exit 1
