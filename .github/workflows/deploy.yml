@@ -24,6 +24,11 @@ jobs:
             workflow_conclusion: success
             branch: ${{github.base_ref}}
 
+        - name: list directory
+          run: |
+            ls -lah
+            ls -lah downloaded-artifact
+
         # - uses: jakejarvis/s3-sync-action@master
         #   with:
         #     args: --acl public-read --follow-symlinks --delete
