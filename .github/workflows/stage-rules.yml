@@ -1,16 +1,18 @@
-name: Enforce PR Source Branch to Stage
+name: Enforce Naming Convention
 
 on:
   pull_request:
     branches:
-      - stage
+      - dev
 
-jobs:
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fail if PR is not from dev
-        if: github.head_ref != 'dev'
-        run: |
-          echo "Error: You can only merge into 'stage' from 'dev'."
-          exit 1
+jobs: 
+    check: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check name pattern 
+              run: | 
+                BRANCH="${{github.refname}}" 
+                if [[ ! "$BRANCH" =~ ^(bugfix|feauture)/.+$ ]]; then
+                    echo "Error: branch does not match naming convetions"
+                    exit 1
+                fi
