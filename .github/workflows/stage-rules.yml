@@ -1,4 +1,4 @@
-name: Enforce Naming Convention
+name: enforce-naming-convention
 
 on:
   pull_request:
