@@ -16,7 +16,7 @@ jobs:
                 echo "$GITHUB_CONTEXT"
 
             - name: Fail if pr is not from dev
-              if: ${{github.head_ref}} =! "dev"
+              if: ${{github.head_ref}} =! 'dev'
               run: |
                 echo "Error: you can only merge from 'dev' branch. '${{github.head_ref}}'"
                 exit 1
