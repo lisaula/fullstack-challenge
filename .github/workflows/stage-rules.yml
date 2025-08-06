@@ -6,7 +6,7 @@ on:
       - stage
 
 jobs:
-  restrict-pr-source:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Fail if PR is not from dev
