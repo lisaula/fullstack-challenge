@@ -1,4 +1,4 @@
-name: Deploy
+name: deploy-on-s3
 on: 
   push: 
     branches:
@@ -7,7 +7,7 @@ on:
         - dev
         
 jobs: 
-    Deploy:
+    deploy-website:
         runs-on: ubuntu-altest
         steps: 
             - uses: actions/download-artifact@v4
