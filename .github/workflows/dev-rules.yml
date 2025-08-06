@@ -14,10 +14,12 @@ jobs:
                 GITHUB_CONTEXT: "${{github}}"
               run: |
                 echo "$GITHUB_CONTEXT"
-            - name: Check name pattern 
+            - name: Check name pattern
+              env: 
+                BRANCH: "${{github.ref_name}}" 
               run: | 
                 env
-                BRANCH="${{github.ref_name}}" 
+                echo "Branch name= $BRANCH"
                 if [[ ! "$BRANCH" =~ ^(bugfix|feauture)/.+$ ]]; then
                     echo "Error: branch does not match naming convetions"
                     exit 1
