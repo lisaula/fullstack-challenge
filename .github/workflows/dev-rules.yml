@@ -16,7 +16,7 @@ jobs:
                 echo "$GITHUB_CONTEXT"
             - name: Check name pattern
               env: 
-                BRANCH: "${{github.ref_name}}" 
+                BRANCH: "${{github.head_ref}}" 
               run: | 
                 env
                 echo "Branch name= $BRANCH"
