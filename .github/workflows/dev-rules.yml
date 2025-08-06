@@ -9,9 +9,17 @@ jobs:
     check: 
         runs-on: ubuntu-latest
         steps:
-            - name: Check name pattern 
+            - name: display github envs
+              env: 
+                GITHUB_CONTEXT: ${{ toJson(github) }}
+              run: |
+                echo "$GITHUB_CONTEXT"
+            - name: Check name pattern
+              env: 
+                BRANCH: "${{github.head_ref}}" 
               run: | 
-                BRANCH="${{github.refname}}" 
+                env
+                echo "Branch name= $BRANCH"
                 if [[ ! "$BRANCH" =~ ^(bugfix|feauture)/.+$ ]]; then
                     echo "Error: branch does not match naming convetions"
                     exit 1
