@@ -24,5 +24,3 @@ jobs:
                 AWS_REGION: 'us-east-2'   # optional: defaults to us-east-1
                 SOURCE_DIR: 'build'
 
-
-
