@@ -1,0 +1,16 @@
+name: Enforce PR Source Branch to Stage
+
+on:
+  pull_request:
+    branches:
+      - stage
+
+jobs:
+  restrict-pr-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if PR is not from dev
+        if: github.head_ref != 'dev'
+        run: |
+          echo "Error: You can only merge into 'stage' from 'dev'."
+          exit 1
