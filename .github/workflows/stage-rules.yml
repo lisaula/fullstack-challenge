@@ -1,0 +1,18 @@
+name: enforce-naming-convention
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs: 
+    check: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check name pattern 
+              run: | 
+                BRANCH="${{github.refname}}" 
+                if [[ ! "$BRANCH" =~ ^(bugfix|feauture)/.+$ ]]; then
+                    echo "Error: branch does not match naming convetions"
+                    exit 1
+                fi
