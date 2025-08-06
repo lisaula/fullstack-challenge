@@ -7,6 +7,12 @@ jobs:
     Build: 
         runs-on: ubuntu-latest
         steps: 
+            - name: display github
+              env: 
+                GITHUB_CONTEXT: ${{ toJson(github) }}
+              run: |
+                echo "$GITHUB_CONTEXT"
+
             - uses: actions/checkout@v4
 
             - uses: actions/setup-node@v4
@@ -44,8 +50,8 @@ jobs:
             - name: upload-artifact
               uses: actions/upload-artifact@v4
               with: 
-                name: ${{github.event.number}}
-                path: ./codebase/rdicidr-0.1.0/build
+                name: build
+                path: ./codebase/rdicidr-0.1.0/build/
 
 
             

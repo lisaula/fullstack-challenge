@@ -19,7 +19,7 @@ jobs:
         - uses: dawidd6/action-download-artifact@v6
           with:
             workflow: build.yml
-            name: ${{github.event.number}}
+            name: build
             path: downloaded-artifact
             workflow_conclusion: success
             branch: ${{github.base_ref}}
@@ -28,9 +28,8 @@ jobs:
           run: |
             ls -lah
             mkdir -p build
-            ls -lah downloaded-artifact/${{github.event.number}}
-            mv downloaded-artifact/${{github.event.number}}/ build/
-            echo "build"
+            ls -lah downloaded-artifact/
+            echo "build listing"
             ls -lah build
             
 
@@ -42,5 +41,5 @@ jobs:
             AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
             AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             AWS_REGION: 'us-east-2'   # optional: defaults to us-east-1
-            SOURCE_DIR: 'downloaded-artifact/${{github.event.number}}/'
+            SOURCE_DIR: 'downloaded-artifact/'
 
