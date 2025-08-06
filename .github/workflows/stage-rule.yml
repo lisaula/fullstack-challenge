@@ -9,6 +9,12 @@ jobs:
     check_pr_source:
         runs-on: ubuntu-latest
         steps:
+            - name: display github
+              env: 
+                GITHUB_CONTEXT: ${{ toJson(github) }}
+              run: |
+                echo "$GITHUB_CONTEXT"
+
             - name: Fail if pr is not from dev
               if: ${{github.base_ref}} =! "dev"
               run: |
