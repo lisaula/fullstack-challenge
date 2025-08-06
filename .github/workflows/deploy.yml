@@ -27,8 +27,12 @@ jobs:
         - name: list directory
           run: |
             ls -lah
-            ls -lah downloaded-artifact
+            mkdir -p build
             ls -lah downloaded-artifact/${{github.event.number}}
+            mv downloaded-artifact/${{github.event.number}}/ build/
+            echo "build"
+            ls -lah build
+            
 
         - uses: jakejarvis/s3-sync-action@master
           with:
