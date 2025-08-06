@@ -1,6 +1,6 @@
 name: deploy-on-s3
-on:
-  push:
+on: 
+  push: 
     branches:
       - main
       - stage
